@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 import sys, os, dropbox, time
 from datetime import datetime
 
-APP_KEY = 'hacwza866qep9o6'   # INSERT APP_KEY HERE
-APP_SECRET = 'kgipko61g58n6uc'     # INSERT APP_SECRET HERE
-DELAY = 0.2 # delay between each file (try to stay under API rate limits)
+APP_KEY = 's98i4jypt1dczrx'   # INSERT APP_KEY HERE
+APP_SECRET = 'hwk69x58crjlc4k'     # INSERT APP_SECRET HERE
+DELAY = 0.05 # delay between each file (try to stay under API rate limits)
 
 HELP_MESSAGE = \
 """Note: You must specify the path starting with "/", where "/" is the root
@@ -68,11 +68,11 @@ def restore_file(client, path, cutoff_datetime, is_deleted, verbose=False):
         if verbose:
             print(path.encode('utf8') + ' ' + str(modtime))
         client.restore(path.encode('utf8'), rev)
-    else:   # there were no revisions before the cutoff, so delete
-        if verbose:
-            print(path.encode('utf8') + ' ' + ('SKIP' if is_deleted else 'DELETE'))
-        if not is_deleted:
-            client.file_delete(path.encode('utf8'))
+#    else:   # there were no revisions before the cutoff, so delete
+#        if verbose:
+#            print(path.encode('utf8') + ' ' + ('SKIP' if is_deleted else 'DELETE'))
+#        if not is_deleted:
+#            client.file_delete(path.encode('utf8'))
 
 
 def restore_folder(client, path, cutoff_datetime, verbose=False):
